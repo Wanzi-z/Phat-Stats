@@ -1,0 +1,28 @@
+//#ifdef enable_cpuFanStatsPerc
+    /* CPU Fan Load% */
+    int cpuFanStart = inputString.indexOf("CFANL") + 5;  //
+    int cpuFanEnd = inputString.indexOf("|", cpuFanStart );
+    
+    String cpuFanString = inputString.substring(cpuFanStart, cpuFanEnd);
+    //Char erase and spacing adjust, MaDerer
+    while (cpuFanString.length() < 3) cpuFanString = " " + cpuFanString;
+
+
+      tft.setTextSize(1);
+      tft.setCursor(215, 9);// (Left/Right, UP/Down)
+      tft.setTextSize(1);
+      tft.print("/ Fan Load");
+
+      tft.setTextSize(3);
+      tft.setCursor(245, 25);// (Left/Right, UP/Down)
+      //tft.print("49");
+      tft.print(cpuFanString); //CPU FAN NOT WORKING!!!
+
+      #ifdef  smallPercent
+      tft.setTextSize(2);
+      tft.print("%");
+      #else
+      tft.setTextSize(3);
+      tft.print("%");
+      //#endif
+      #endif
